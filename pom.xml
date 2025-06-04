@@ -61,6 +61,7 @@
         <module>patient-service</module>
         <module>doctor-service</module>
         <module>auth-service</module>
+        <module>api-gateway</module>
     </modules>
 
 </project>

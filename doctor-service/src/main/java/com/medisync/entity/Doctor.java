@@ -36,8 +36,6 @@ public class Doctor {
 
     private String email;
 
-    private String password;
-
     @Enumerated(EnumType.STRING)
     private MedicalSpecialization specialization;
 
@@ -50,7 +48,6 @@ public class Doctor {
                 .lastName(dto.getLastName())
                 .phone(dto.getPhone())
                 .email(dto.getEmail())
-                .password(dto.getPassword())
                 .licenseNumber(dto.getLicenseNumber())
                 .title(dto.getTitle())
                 .specialization(dto.getSpecialization())

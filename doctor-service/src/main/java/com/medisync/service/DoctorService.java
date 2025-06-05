@@ -21,9 +21,6 @@ public class DoctorService {
     // FIXME right now we can create unstop doctor with same details (what is the diff key, id generate auto)
     // TODO check if try to create doctor that already exist
     public Doctor create(Doctor doctor) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        doctor.setPassword(encoder.encode(doctor.getPassword()));
-        // check: encoder.matches("myPassword", result)
         Doctor savedDoctor = repository.save(doctor);
         log.info("create new doctor with id " + savedDoctor.getId());
         return savedDoctor;

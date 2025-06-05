@@ -40,8 +40,6 @@ public class Patient {
 
     private String email;
 
-    private String password;
-
     @Enumerated(EnumType.STRING)
     private InsuranceInfo insuranceInfo;
 
@@ -57,7 +55,6 @@ public class Patient {
                 .phone(dto.getPhone())
                 .dateOfBirth(dto.getDateOfBirth())
                 .email(dto.getEmail())
-                .password(dto.getPassword())
                 .build();
     }
 }

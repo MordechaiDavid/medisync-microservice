@@ -13,11 +13,12 @@
 
     <artifactId>doctor-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>medisync-doctor-service</name>
+    <name>doctor-service</name>
     <description>Doctor management microservice for MediSync</description>
     <packaging>jar</packaging>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

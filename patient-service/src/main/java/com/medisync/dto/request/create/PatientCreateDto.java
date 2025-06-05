@@ -10,8 +10,6 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -29,8 +27,6 @@ public class PatientCreateDto {
     private String phone;
 
     private String email;
-
-    private String password;
 
     private InsuranceInfo insuranceInfo;
 }

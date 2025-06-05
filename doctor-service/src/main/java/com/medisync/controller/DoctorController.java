@@ -36,7 +36,6 @@ public class DoctorController {
     @GetMapping("{id}")
     public ResponseEntity<Optional<Doctor>> getById(@PathVariable Long id) {
         Optional<Doctor> optionalDoctor = service.getById(id);
-        optionalDoctor.ifPresent(doctor -> doctor.setPassword(""));
         return new ResponseEntity<Optional<Doctor>>(optionalDoctor, HttpStatus.OK);
     }
 

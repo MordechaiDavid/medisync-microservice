@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath> </parent>
 
     <artifactId>patient-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version> <name>medisync-patient-service</name>
+    <version>0.0.1-SNAPSHOT</version> <name>patient-service</name>
     <description>Patient management microservice for MediSync</description>
     <packaging>jar</packaging> <dependencies>
     <dependency>

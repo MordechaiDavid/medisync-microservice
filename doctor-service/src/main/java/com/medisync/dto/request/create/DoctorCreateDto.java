@@ -17,7 +17,6 @@ public class DoctorCreateDto {
     private DoctorTitle title;
     private String phone;
     private String email;
-    private String password;
     private MedicalSpecialization specialization;
 
 

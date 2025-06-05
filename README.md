@@ -51,7 +51,7 @@ The system is structured in the following layers:
 
 Below is the system architecture diagram of medisync:
 
-![Architecture Diagram](./assets/architecture-diagram.png)
+![Architecture Diagram](architecture-diagram.png)
 
 
 ---

@@ -62,6 +62,7 @@
         <module>doctor-service</module>
         <module>auth-service</module>
         <module>api-gateway</module>
+        <module>eureka-server</module>
     </modules>
 
 </project>

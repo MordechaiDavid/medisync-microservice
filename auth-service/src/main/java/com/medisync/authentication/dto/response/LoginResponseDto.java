@@ -1,4 +1,4 @@
-package com.medisync.dto.response;
+package com.medisync.authentication.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

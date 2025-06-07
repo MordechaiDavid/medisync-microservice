@@ -2,6 +2,10 @@ server:
   port: 8080
 
 spring:
+  security:
+    user:
+      name: user
+      password: 1234
   application:
     name: api-gateway
   cloud:
@@ -22,9 +26,11 @@ spring:
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/api/auth/**
-          filters:
-            - RemoveRequestHeader=Cookie
+            - Path=/api/users/**
+
+jwt:
+  secret: myVeryLongSecretKeyThatIsAtLeast32CharactersLongForJWTSecurity
+  expiration: 86400000
 
 eureka:
   client:
@@ -34,3 +40,13 @@ eureka:
     fetch-registry: true
   instance:
     prefer-ip-address: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized

@@ -15,7 +15,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeExchange(authorize -> authorize
-                .pathMatchers("/api/auth/**").permitAll()
+                .pathMatchers("/api/users/**").permitAll()
                 .anyExchange().authenticated()
             );
         return http.build();

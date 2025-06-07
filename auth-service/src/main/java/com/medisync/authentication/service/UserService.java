@@ -1,11 +1,9 @@
-package com.medisync.service;
+package com.medisync.authentication.service;
 
-import com.medisync.entity.User;
-import com.medisync.repository.UserRepository;
-import com.medisync.repository.UserRepository;
-import com.medisync.util.JwtUtil;
+import com.medisync.authentication.entity.User;
+import com.medisync.authentication.repository.UserRepository;
+import com.medisync.authentication.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -65,14 +63,18 @@ public class UserService {
     }
 
     public String authenticateAndGenerateToken(String email, String password){
-        Optional<User> optionalUser = repository.findByEmail(email);
-        if (optionalUser.isPresent()){
-            User user = optionalUser.get();
-            if (passwordEncoder.matches(password, user.getPassword())){
-                return jwtUtil.generateToken(user.getId(), user.getRole());
-            }
+        Optional<User> userOptional = repository.findByEmail(email);
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User not found");
         }
-        return null;
+        User user = userOptional.get();
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        return jwtUtil.generateToken(user.getId(), user.getRole().name());
+
     }
 
 

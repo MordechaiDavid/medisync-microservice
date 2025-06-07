@@ -1,6 +1,6 @@
-package com.medisync.repository;
+package com.medisync.authentication.repository;
 
-import com.medisync.entity.User;
+import com.medisync.authentication.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

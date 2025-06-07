@@ -1,8 +1,7 @@
-package com.medisync.dto.request.update;
+package com.medisync.authentication.dto.request.update;
 
-import com.medisync.enums.UserType;
+import com.medisync.authentication.enums.UserType;
 import lombok.*;
-import java.time.LocalDate;
 
 @Getter
 @Setter

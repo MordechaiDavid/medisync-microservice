@@ -1,13 +1,12 @@
-package com.medisync.entity;
+package com.medisync.authentication.entity;
 
-import com.medisync.dto.request.create.UserCreateDto;
-import com.medisync.dto.request.update.UserUpdateDto;
-import com.medisync.enums.UserType;
+import com.medisync.authentication.dto.request.create.UserCreateDto;
+import com.medisync.authentication.dto.request.update.UserUpdateDto;
+import com.medisync.authentication.enums.UserType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,8 +21,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String email;
 
+    @Column(unique = true)
     private String identityNumber;
 
     private String password;

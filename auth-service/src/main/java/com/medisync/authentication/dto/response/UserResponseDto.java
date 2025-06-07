@@ -1,9 +1,7 @@
-package com.medisync.dto.response;
+package com.medisync.authentication.dto.response;
 
-import com.medisync.entity.User;
-import com.medisync.enums.UserType;
+import com.medisync.authentication.entity.User;
 import lombok.*;
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor

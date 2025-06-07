@@ -1,11 +1,11 @@
-package com.medisync.controller;
+package com.medisync.authentication.controller;
 
-import com.medisync.dto.request.LoginRequestDto;
-import com.medisync.dto.request.create.UserCreateDto;
-import com.medisync.dto.response.LoginResponseDto;
-import com.medisync.dto.response.UserResponseDto;
-import com.medisync.entity.User;
-import com.medisync.service.UserService;
+import com.medisync.authentication.dto.request.LoginRequestDto;
+import com.medisync.authentication.dto.request.create.UserCreateDto;
+import com.medisync.authentication.dto.response.LoginResponseDto;
+import com.medisync.authentication.dto.response.UserResponseDto;
+import com.medisync.authentication.entity.User;
+import com.medisync.authentication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @PostMapping
+    @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponseDto create(@RequestBody UserCreateDto dto) {
         User user = service.create(User.fromDto(dto));
@@ -36,19 +36,19 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Optional<User>> getById(@PathVariable Long id) {
+    public ResponseEntity<Optional<User>> getById(@PathVariable("id") Long id) {
         Optional<User> optionalUser = service.getById(id);
         optionalUser.ifPresent(user -> user.setPassword(""));
         return new ResponseEntity<Optional<User>>(optionalUser, HttpStatus.OK);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<User> update(@PathVariable("id") Long id, @RequestBody User user) {
         return new ResponseEntity<User>(service.update(user, id), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
         service.delete(id);
         return new ResponseEntity<String>("User deleted successfully with id: " + id, HttpStatus.OK);
     }

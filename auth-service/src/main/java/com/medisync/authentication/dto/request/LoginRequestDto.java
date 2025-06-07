@@ -1,4 +1,4 @@
-package com.medisync.dto.request;
+package com.medisync.authentication.dto.request;
 
 import lombok.Data;
 

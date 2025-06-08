@@ -1,11 +1,9 @@
-package com.medisync.service;
+package com.medisync.doctors.service;
 
-import com.medisync.entity.Doctor;
-import com.medisync.repository.DoctorRepository;
-import com.medisync.repository.DoctorRepository;
+import com.medisync.doctors.entity.Doctor;
+import com.medisync.doctors.repository.DoctorRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

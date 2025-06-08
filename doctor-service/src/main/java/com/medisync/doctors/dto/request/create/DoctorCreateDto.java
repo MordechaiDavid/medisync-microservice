@@ -1,12 +1,10 @@
-package com.medisync.dto.request.create;
+package com.medisync.doctors.dto.request.create;
 
-import com.medisync.enums.DoctorTitle;
-import com.medisync.enums.MedicalSpecialization;
+import com.medisync.doctors.enums.DoctorTitle;
+import com.medisync.doctors.enums.MedicalSpecialization;
 import lombok.*;
 
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

@@ -16,21 +16,21 @@ import java.util.List;
 import java.util.function.Predicate;
 
 @Component
-public class GatewayJwtFilter implements GlobalFilter, Ordered {
+public class GatewayJwtFilter {   // implements GlobalFilter, Ordered {
     private final JwtUtil jwtUtil;
 
     private static final List<String> OPEN_API_ENDPOINTS = List.of(
-            "/api/users/login",
-            "/api/users/register",
-            "/eureka",
-            "/actuator"
+            "/api/"
+//            "/api/users/register",
+//            "/eureka",
+//            "/actuator"
     );
 
     public GatewayJwtFilter(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
     }
 
-    @Override
+//    @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         String path = request.getURI().getPath();
@@ -80,7 +80,7 @@ public class GatewayJwtFilter implements GlobalFilter, Ordered {
         return response.setComplete();
     }
 
-    @Override
+//    @Override
     public int getOrder() {
         return -1;
     }

@@ -1,9 +1,9 @@
-package com.medisync.controller;
+package com.medisync.doctors.controller;
 
-import com.medisync.dto.request.create.DoctorCreateDto;
-import com.medisync.dto.response.DoctorResponseDto;
-import com.medisync.entity.Doctor;
-import com.medisync.service.DoctorService;
+import com.medisync.doctors.dto.request.create.DoctorCreateDto;
+import com.medisync.doctors.dto.response.DoctorResponseDto;
+import com.medisync.doctors.entity.Doctor;
+import com.medisync.doctors.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

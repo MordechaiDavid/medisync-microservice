@@ -1,8 +1,8 @@
-package com.medisync.entity;
+package com.medisync.doctors.entity;
 
-import com.medisync.dto.request.create.DoctorCreateDto;
-import com.medisync.enums.DoctorTitle;
-import com.medisync.enums.MedicalSpecialization;
+import com.medisync.doctors.dto.request.create.DoctorCreateDto;
+import com.medisync.doctors.enums.DoctorTitle;
+import com.medisync.doctors.enums.MedicalSpecialization;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

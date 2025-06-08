@@ -1,8 +1,8 @@
-package com.medisync.dto.response;
+package com.medisync.doctors.dto.response;
 
-import com.medisync.entity.Doctor;
-import com.medisync.enums.DoctorTitle;
-import com.medisync.enums.MedicalSpecialization;
+import com.medisync.doctors.entity.Doctor;
+import com.medisync.doctors.enums.DoctorTitle;
+import com.medisync.doctors.enums.MedicalSpecialization;
 import lombok.*;
 
 @Getter

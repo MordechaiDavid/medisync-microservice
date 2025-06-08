@@ -1,5 +1,6 @@
 package com.medisync.authentication.controller;
 
+import com.medisync.authentication.api.UserApi;
 import com.medisync.authentication.dto.request.LoginRequestDto;
 import com.medisync.authentication.dto.request.create.UserCreateDto;
 import com.medisync.authentication.dto.response.LoginResponseDto;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/users")
-public class UserController {
+public class UserController implements UserApi {
 
     @Autowired
     private UserService service;

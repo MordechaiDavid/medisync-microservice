@@ -1,28 +1,12 @@
-server:
-  port: 8081
-
 spring:
+  profiles:
+    active: dev
   application:
     name: auth-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/medisync_auth_db
-    username: root
-    password: 1234
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
 
-jwt:
-  secret: myVeryLongSecretKeyThatIsAtLeast32CharactersLongForJWTSecurity
-  expiration: 86400000
+server:
+    port: 8081
 
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-  instance:
-    prefer-ip-address: true
+#logging:
+#  level:
+#    root: info

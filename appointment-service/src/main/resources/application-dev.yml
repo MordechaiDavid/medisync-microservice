@@ -2,7 +2,7 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/medisync_appointment_db
+    url: jdbc:mysql://localhost:3306/medisync_appointments_db
     username: root
     password: 1234
   jpa:

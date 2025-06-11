@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: appointment-service
+
+server:
+    port: 8084
+
+#logging:
+#  level:
+#    root: info

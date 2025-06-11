@@ -1,12 +1,12 @@
-package com.medisync.doctors;
+package com.medisync.appointments;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DoctorServiceApplication {
+public class AppointmentServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DoctorServiceApplication.class, args);
+        SpringApplication.run(AppointmentServiceApplication.class, args);
     }
 
 }

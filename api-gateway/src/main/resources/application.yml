@@ -2,10 +2,9 @@ server:
   port: 8080
 
 spring:
-  security:
-    user:
-      name: user
-      password: 1234
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   application:
     name: api-gateway
   cloud:
@@ -28,9 +27,9 @@ spring:
           predicates:
             - Path=/api/users/**
 
-jwt:
-  secret: myVeryLongSecretKeyThatIsAtLeast32CharactersLongForJWTSecurity
-  expiration: 86400000
+#jwt:
+#  secret: myVeryLongSecretKeyThatIsAtLeast32CharactersLongForJWTSecurity
+#  expiration: 86400000
 
 eureka:
   client:

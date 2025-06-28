@@ -10,11 +10,6 @@ spring:
       ddl-auto: update
     show-sql: true
 
-jwt:
-  secret: myVeryLongSecretKeyThatIsAtLeast32CharactersLongForJWTSecurity
-  expiration: 86400000
-
-
 eureka:
   client:
     service-url:

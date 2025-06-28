@@ -98,6 +98,7 @@
         <module>api-gateway</module>
         <module>eureka-server</module>
         <module>appointment-service</module>
+        <module>ai-assistant-service</module>
     </modules>
 
 </project>

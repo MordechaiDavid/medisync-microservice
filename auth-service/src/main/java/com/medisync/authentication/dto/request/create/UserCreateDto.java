@@ -5,6 +5,8 @@ import lombok.*;
 
 @AllArgsConstructor
 @Data
+@NoArgsConstructor
+@Builder
 public class UserCreateDto {
     private String identityNumber;
     private String email;

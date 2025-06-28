@@ -1,6 +1,5 @@
 package com.medisync.entity;
 
-import com.fasterxml.jackson.databind.annotation.EnumNaming;
 import com.medisync.dto.request.create.PatientCreateDto;
 import com.medisync.enums.Gender;
 import com.medisync.enums.InsuranceInfo;

@@ -8,13 +8,10 @@ spring:
   application:
     name: ai-assistant-service
 
-# Custom OpenAI Configuration
-app:
-  openai:
-    api-key: ${OPENAI_API_KEY:your-api-key-here}
-    model: gpt-3.5-turbo
-    temperature: 0.3
-    max-tokens: 500
+gamini:
+  api:
+    key: ${GEMINI_API_KEY}
+
 
 
 eureka:
@@ -26,7 +23,7 @@ eureka:
   instance:
     prefer-ip-address: true
 
-# Management/Actuator
+
 management:
   endpoints:
     web:

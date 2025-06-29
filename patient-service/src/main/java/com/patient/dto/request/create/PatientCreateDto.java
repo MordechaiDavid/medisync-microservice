@@ -1,10 +1,7 @@
-package com.medisync.dto.request.create;
+package com.patient.dto.request.create;
 
-import com.medisync.enums.Gender;
-import com.medisync.enums.InsuranceInfo;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.patient.enums.Gender;
+import com.patient.enums.InsuranceInfo;
 import lombok.*;
 
 import java.time.LocalDate;

@@ -1,8 +1,8 @@
-package com.medisync.entity;
+package com.patient.entity;
 
-import com.medisync.dto.request.create.PatientCreateDto;
-import com.medisync.enums.Gender;
-import com.medisync.enums.InsuranceInfo;
+import com.patient.dto.request.create.PatientCreateDto;
+import com.patient.enums.Gender;
+import com.patient.enums.InsuranceInfo;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

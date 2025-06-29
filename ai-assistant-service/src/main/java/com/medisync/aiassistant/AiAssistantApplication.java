@@ -1,4 +1,4 @@
-package com.medisync;
+package com.medisync.aiassistant;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

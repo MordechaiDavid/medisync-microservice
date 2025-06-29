@@ -1,4 +1,4 @@
-package com.medisync.enums;
+package com.patient.enums;
 
 public enum InsuranceInfo {
     MACABI

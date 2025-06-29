@@ -1,17 +1,12 @@
-package com.medisync.dto.response;
+package com.patient.dto.response;
 
-import com.medisync.entity.Patient;
-import com.medisync.enums.Gender;
-import com.medisync.enums.InsuranceInfo;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.patient.entity.Patient;
+import com.patient.enums.Gender;
+import com.patient.enums.InsuranceInfo;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Getter
 @Setter

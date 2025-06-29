@@ -2,10 +2,11 @@ package com.medisync.aiassistant.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.medisync.aiassistant.entity.Intent;
+import com.medisync.aiassistant.dto.ApiRequest;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -17,64 +18,46 @@ public class LlmService {
     private final ObjectMapper objectMapper;
 
     private static final String SYSTEM_PROMPT = """
-            You are an intelligent API router for a healthcare management system called medisync.
+            You are an API router for a healthcare system.
             
-            Your job is to analyze user requests and return ONLY a JSON response with this exact structure:
+            Convert user requests directly to API endpoints. Return ONLY a JSON response:
             {
-              "intent": "<INTENT_NAME>",
-              "parameters": {
-                "id": "<optional_id_if_mentioned>"
-              }
+              "endpoint": "<API_ENDPOINT>",
+              "method": "<HTTP_METHOD>"
             }
             
-            Available intents:
-            - GET_ALL_USERS: Show all users, list users
-            - GET_USER_BY_ID: Get specific user by ID
-            - GET_ALL_PATIENTS: Show all patients, list patients
-            - GET_PATIENT_BY_ID: Get specific patient by ID
-            - GET_ALL_DOCTORS: Show all doctors, list doctors
-            - GET_DOCTOR_BY_ID: Get specific doctor by ID
-            - GET_ALL_APPOINTMENTS: Show all appointments, list appointments
-            - GET_APPOINTMENT_BY_ID: Get specific appointment by ID
-            - UNKNOWN: For requests that don't match any intent
+            Available endpoints:
+            - GET /api/users - Show all users
+            - GET /api/users/{id} - Get specific user by ID
+            - GET /api/patients - Show all patients
+            - GET /api/patients/{id} - Get specific patient by ID
+            - GET /api/doctors - Show all doctors
+            - GET /api/doctors/{id} - Get specific doctor by ID
+            - GET /api/appointments - Show all appointments
+            - GET /api/appointments/{id} - Get specific appointment by ID
             
             Examples:
-            User: "Show me all patients" → {"intent": "GET_ALL_PATIENTS", "parameters": {}}
-            User: "Get user with ID 5" → {"intent": "GET_USER_BY_ID", "parameters": {"id": "5"}}
-            User: "List all doctors" → {"intent": "GET_ALL_DOCTORS", "parameters": {}}
+            User: "Show me all patients" → {"endpoint": "/api/patients", "method": "GET"}
+            User: "Get user with ID 5" → {"endpoint": "/api/users/5", "method": "GET"}
+            User: "List all doctors" → {"endpoint": "/api/doctors", "method": "GET"}
             
-            Return ONLY the JSON, ONLY from intents. no explanations.
+            Return ONLY the JSON, no explanations.
             """;
 
-    public IntentResult extractIntent(String userMessage) {
+    public ApiRequest extractApiRequest(String userMessage) {
         try {
-            log.debug("Processing user message: {}", userMessage);
-            
             String prompt = SYSTEM_PROMPT + "\n\nUser message: " + userMessage;
             String response = chatLanguageModel.generate(prompt);
-            
-            log.debug("LLM response: {}", response);
-            
-            // Parse JSON response
+            log.info("LLM response: {}", response);
+
             JsonNode jsonNode = objectMapper.readTree(response);
-            String intentStr = jsonNode.get("intent").asText();
-            Intent intent = Intent.valueOf(intentStr);
-            
-            // Extract parameters
-            String id = null;
-            if (jsonNode.has("parameters") && jsonNode.get("parameters").has("id")) {
-                id = jsonNode.get("parameters").get("id").asText();
-            }
-            
-            log.debug("Extracted intent: {}, id: {}", intent, id);
-            return new IntentResult(intent, id);
-            
+            String endpoint = jsonNode.get("endpoint").asText();
+            String methodStr = jsonNode.get("method").asText();
+            HttpMethod method = HttpMethod.valueOf(methodStr);
+
+            return new ApiRequest(endpoint, method);
         } catch (Exception e) {
-            log.error("Error extracting intent from message: {}", userMessage, e);
-            // If anything goes wrong, return UNKNOWN intent
-            return new IntentResult(Intent.UNKNOWN, null);
+            throw new RuntimeException(e);
         }
     }
-
-    public record IntentResult(Intent intent, String id) {}
 }

@@ -16,7 +16,7 @@ app:
     temperature: 0.3
     max-tokens: 500
 
-# Eureka Configuration
+
 eureka:
   client:
     serviceUrl:

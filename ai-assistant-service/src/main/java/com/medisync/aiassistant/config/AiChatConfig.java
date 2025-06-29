@@ -7,13 +7,14 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "app.openai")
-public class OpenAiConfig {
+public class AiChatConfig {
 
     private String apiKey;
     private String model;
@@ -34,5 +35,10 @@ public class OpenAiConfig {
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
+    }
+    
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

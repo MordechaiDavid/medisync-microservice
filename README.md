@@ -1,25 +1,23 @@
-# medisync - Microservices-Based Healthcare Management System
+# medisync - sample microservices-based healthcare system
 
-**medisync** is a backend healthcare management system built using a
-modern microservices' architecture. The project is being
-developed in **Java** with **Spring Framework**, and each microservice is responsible
-for a separate domain, backed by its own dedicated MySQL database.
+
+medisync is a sample backend system for managing healthcare data, built in Java with Spring. It includes separate microservices with their own MySQL databases, and a module that translates natural language requests into API calls using an LLM.
 
 ---
 
-## 🚧 Development Status
+## Services
 
-✅ **Implemented Services:**
+- `Auth Service`: User registration, login, password reset
+- `Patient Service`: Patient profile management
+- `Doctor Service`: Doctor availability and profile
+- `Appointment Service`: Scheduling and managing appointments
+- `AI Assistant Service`: Natural language processing and REST API mapping
+- **Each service has its own database**
 
-- `eureka-server` – Service Discovery and Registration
-- `api-gateway` – API Gateway with routing and load balancing
-- `auth-service` – User authentication and authorization
-- `doctor-service` – Doctor profile and management
-- `patient-service` – Patient profile and management
 
 ---
 
-## 🧱 System Architecture Overview
+## System Architecture Overview
 
 The system is structured in the following layers:
 
@@ -38,18 +36,13 @@ The system is structured in the following layers:
         - Load Balancing
         - Service Discovery integration
 
-4. **Microservices**
-    - `Auth Service`: User registration, login, password reset
-    - `Patient Service`: Patient profile management
-    - `Doctor Service`: Doctor availability and profile
-    - `Medical Records Service` (planned): EHR/EMR management
-    - **Each service has its own database**
+
 
 5. **External Storage**
     - AWS S3 (planned) for storing medical documents and images
 
 6. **Database Layer**
-    - Individual databases per service: `medisync_auth_db`, `medisync_doctor_db`, `medisync_patient_db`
+    - Individual databases per service: `medisync_auth_db`, `medisync_doctor_db`, `medisync_patient_db`, `medisync_appointments_db`
 
 ---
 
@@ -64,19 +57,13 @@ Below is the system architecture diagram of medisync:
 ## 🛠️ Tech Stack
 
 - **Java 17**
-- **Spring Boot** - Microservices framework
-- **Spring Cloud Netflix Eureka** - Service Discovery
-- **Spring Cloud Gateway** - API Gateway
-- **Spring Data JPA** - Data persistence
-- **Jakarta EE** - Enterprise Java specifications
-- **Lombok** - Code generation
-- **MySQL** - Database
-- **Microservices Architecture**
-- **REST APIs**
-- **JWT Authentication**
-- **Maven** - Build tool
-- **IntelliJ IDEA** - Development IDE
-
+- **Spring Boot**
+- **Spring Cloud Netflix Eureka**
+- **Spring Cloud Gateway**
+- **Spring Data JPA**
+- **MySQL** 
+- **Maven**
+- 
 ---
 
 ## 🏗️ Current Microservices
@@ -119,6 +106,14 @@ Below is the system architecture diagram of medisync:
   - Patient profile management
   - Medical history tracking
   - Personal information management
+
+### 6. AI Assistant Service
+- **Purpose**: Simplifies user interaction through natural language processing
+- **Features**:
+  - Accepts natural language requests (e.g., "get all users")
+  - Maps requests to appropriate REST API endpoints using an LLM
+  - Sends HTTP requests to internal microservices
+  - Formats and returns structured responses to users
 
 ---
 
@@ -170,6 +165,10 @@ Below is the system architecture diagram of medisync:
    # Patient Service
    cd patient-service
    mvn spring-boot:run
+   
+   # AI Assistant Service
+   cd ai-assistant-service
+   mvn spring-boot:run
    ```
 
 ### Service URLs
@@ -178,20 +177,8 @@ Below is the system architecture diagram of medisync:
 - Auth Service: `http://localhost:8081`
 - Doctor Service: `http://localhost:8082`
 - Patient Service: `http://localhost:8083`
+- AI Assistant Service: `http://localhost:8084`
 
 ---
 
-## 👨‍💻 Developer Note
-
-> This is a personal learning project aimed at building backend experience using real-world architectural patterns and modern Spring Cloud technologies.
-
----
-
-## 📌 Notes
-
-- Each microservice uses its own database for data isolation
-- Services are registered with Eureka for dynamic discovery
-- Inter-service communication is currently via REST APIs
-- All external requests go through the API Gateway
-- Architecture is modular and extensible
-- Uses Jakarta EE specifications for enterprise features
+Enjoy, and feel free to contribute!

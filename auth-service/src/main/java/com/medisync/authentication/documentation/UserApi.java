@@ -1,4 +1,4 @@
-package com.medisync.authentication.api;
+package com.medisync.authentication.documentation;
 
 import com.medisync.authentication.dto.request.LoginRequestDto;
 import com.medisync.authentication.dto.request.create.UserCreateDto;
@@ -12,7 +12,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;

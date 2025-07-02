@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GeminiApiClient {
+public class GeminiClient {
     private final Client client;
 
-    public GeminiApiClient(@Value("${gamini.api.key}") String apiKey) {
+    public GeminiClient(@Value("${gamini.api.key}") String apiKey) {
         this.client = Client.builder().apiKey(apiKey).build();
     }
 

@@ -2,7 +2,7 @@ package com.medisync.aiassistant.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.medisync.aiassistant.client.GeminiApiClient;
+import com.medisync.aiassistant.client.GeminiClient;
 import com.medisync.aiassistant.dto.ApiRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class ApiRequestBuilderFromLLM {
 
     private final ObjectMapper objectMapper;
-    private final GeminiApiClient geminiApiClient;
+    private final GeminiClient geminiClient;
     private static final String SYSTEM_PROMPT = """
             You are an API router for a healthcare system.
             
@@ -41,16 +41,16 @@ public class ApiRequestBuilderFromLLM {
             Return ONLY the JSON, no explanations.
             """;
 
-    public ApiRequestBuilderFromLLM(ObjectMapper objectMapper, GeminiApiClient geminiApiClient) {
+    public ApiRequestBuilderFromLLM(ObjectMapper objectMapper, GeminiClient geminiClient) {
         this.objectMapper = objectMapper;
-        this.geminiApiClient = geminiApiClient;
+        this.geminiClient = geminiClient;
     }
 
     public ApiRequest extractApiRequest(String userMessage) {
         try {
             String prompt = SYSTEM_PROMPT + "\n\n User message: " + userMessage;
             log.info("send prompt to gamma model: {}", prompt);
-            String response = geminiApiClient.generateContentResponse("gemma-3n-e2b-it", prompt).text();
+            String response = geminiClient.generateContentResponse("gemma-3n-e2b-it", prompt).text();
             log.info("LLM response: {}", response);
             String cleanResponse = cleanJsonResponse(response);
             log.info("clean response: {}", cleanResponse);

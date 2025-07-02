@@ -1,6 +1,6 @@
 package com.medisync.authentication.controller;
 
-import com.medisync.authentication.api.UserApi;
+import com.medisync.authentication.documentation.UserApi;
 import com.medisync.authentication.dto.request.LoginRequestDto;
 import com.medisync.authentication.dto.request.create.UserCreateDto;
 import com.medisync.authentication.dto.response.LoginResponseDto;
